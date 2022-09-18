@@ -1,0 +1,41 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Books
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <h5 class="text-center mb-5">Books </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Issued Date</th>
+                <th scope="col">Return Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for book in data%}
+            <tr>
+                <td>{{book.book}}</td>
+                <td>{{book.issue_date}}</td>
+                <td>{{book.return_date}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div class="container text-center mt-5">
+        <a href="/member/view-all_books">
+            <button class="sm-btn btn-success">See all books</button>
+        </a>
+    </div>
+</div>
+</section>
+
+{% endblock %}

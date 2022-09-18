@@ -1,0 +1,46 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Update book
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <h5 class="text-center mb-5">Update book </h5>
+    <form method='POST' action='http://127.0.0.1:8000/librarian/view-book/{{book.isbn}}'>
+        {%csrf_token%}
+        <div class="form-group">
+            <label for="Namme">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" value='{{book.title}}'
+                name='title'>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" aria-describedby="author" value='{{book.author}}'
+                name='author'>
+        </div>
+        <div class="form-group ">
+            <label for="Namme">Quantity</label>
+            <input type="text" class="form-control" id="quantity" aria-describedby="quantity" value='{{book.quantity}}'
+                name='quantity'>
+        </div>
+
+        <div class="form-group ">
+            <label for="Namme">Quantity</label>
+            <input type="text" class="form-control" id="isbn" aria-describedby="isbn" value='{{book.isbn}}' name='isbn'>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</section>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Dashboard{% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="container">
+        <br>
+        <div class="card text-center">
+            <div class="card-header">
+                <h5 class="text-center"> Logged as a librarian</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Dashboard</h5>
+                <a href="/view-all_books" class="btn btn-primary">View Books </a>
+                <a href="/librarian/view-all_members" class="btn btn-primary">View Members</a>
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+        </div>
+    </div>
+    </section>
+    {% endblock %}

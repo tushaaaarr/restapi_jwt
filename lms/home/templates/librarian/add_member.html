@@ -1,0 +1,49 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Add new book
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5">
+    <br>
+    <h5 class="text-center mb-5">Add new Member </h5>
+    <form method='POST' action='http://127.0.0.1:8000/librarian/add-member'>
+        {%csrf_token%}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" value='' name='name'>
+        </div>
+
+        <select class="form-control form-control" name="user">
+            <option>Select User</option>
+                {%for user in data%}
+                <option value="{{user.id}}">{{user}}</option>
+                {%endfor%}
+
+        </select>
+
+
+          <br>
+        <div class="form-group ">
+            <label for="contact_no">Contact no</label>
+            <input type="phone" class="form-control" id="contact_no" aria-describedby="contact_no" value=''
+                name='contact_no'>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+<br>
+</section>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

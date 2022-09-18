@@ -1,0 +1,64 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Books
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <br>
+
+    <h5 class="text-center mb-5">Books </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ISDN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Quantity</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for book in data%}
+            <tr>
+                <td scope="row">{{book.isbn}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.quantity}}</td>
+                {%if book.status == 'available' %}
+                <form action="/member/borrow-book" method="post">
+                    {%csrf_token%}
+                    <input type='hidden' name='book' value='{{book.id}}'>
+                    <input type='hidden' name='member' value={{book.member_id}}>
+                    <td><button class="sm-btn btn-primary ">Borrow</button></td>
+                    <td class="text-success">Available</td>
+                </form>
+                {%else%}
+                <td>
+                    <a href='/member/return-book/{{book.borrowed_id}}'><button
+                            class="sm-btn btn-danger ">Return</button>
+                </td>
+                </a>
+                <td class="text-danger">Unavailable</td>
+                {%endif%}
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div class="container text-center mt-5">
+        <a href="/member/view-issued_books">
+            <button class="sm-btn btn-success">Issued books</button>
+        </a>
+    </div>
+</div>
+</section>
+
+{% endblock %}

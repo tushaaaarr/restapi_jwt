@@ -1,0 +1,52 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Members
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <h5 class="text-center mb-5">Books </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">contact_no</th>
+                <th scope="col">Issued Books</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for member in data%}
+            <tr>
+                <td scope="row">{{member.id}}</td>
+                <td>{{member.name}}</td>
+                <td>{{member.contact_no}}</td>
+                <td>{{member.quantity}}</td>
+
+                <td class="text-success"><a href="/librarian/update-member/{{member.id}}">Update</a></td>
+                <form action="/librarian/delete-member/{{member.id}}" method="post">
+                    {%csrf_token%}
+                    <td><button class="sm-btn btn-danger ">Delete</button></td>
+                </form>
+                </a>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div class="container text-center mt-5">
+        <a href="/librarian/add-member">
+            <button class="sm-btn btn-success">Add new Member</button>
+        </a>
+    </div>
+</div>
+</section>
+
+{% endblock %}

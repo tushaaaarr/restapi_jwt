@@ -1,0 +1,48 @@
+{% extends 'librarian/basic.html' %}
+{% load static %}
+{% block title %}
+Add new book
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5">
+    <br>
+    <h5 class="text-center mb-5">Add new book </h5>
+    <form method='POST' action='http://127.0.0.1:8000/librarian/add-book'>
+        {%csrf_token%}
+        <div class="form-group">
+            <label for="Namme">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" value='' name='title'>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" aria-describedby="author" value='' name='author'>
+        </div>
+        <div class="form-group ">
+            <label for="Namme">Summary</label>
+            <textarea class="form-control" id="summary" aria-describedby="summary" value='' name='summary'></textarea>
+        </div>
+        <div class="form-group ">
+            <label for="Namme">Quantity</label>
+            <input type="text" class="form-control" id="quantity" aria-describedby="quantity" value='' name='quantity'>
+        </div>
+
+        <div class="form-group ">
+            <label for="Namme">ISBN</label>
+            <input type="text" class="form-control" id="isbn" aria-describedby="isbn" value='' name='isbn'>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+<br>
+</section>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
